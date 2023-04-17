@@ -14,6 +14,9 @@ export default {
         .get(url)
         .then(response => {
           this.characters = response.data.data;
+          console.log(response.data.data);
+          console.log(response.data);
+
         }).catch(err => {
           console.log(err);
           console.error(err.message);
@@ -40,13 +43,13 @@ export default {
     <div class="container">
       <div class="py-3">
         <select name="" id="">
-          <option value="">Alien</option>
+          <option v-for="character in characters" value="">{{ character.archetype }} </option>
         </select>
       </div>
 
       <div class="row bg-white justify-content-between p-5">
-
         <div class="col-12 main_count bg-dark text-white p-3 fw-bold">Found tot cards</div>
+
 
         <div v-for="character in characters" class="col-12 col-md-4 col-lg-3">
           <div class="content_card">
