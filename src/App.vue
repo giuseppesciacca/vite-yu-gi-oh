@@ -34,7 +34,27 @@ export default {
     </div>
   </header>
 
-  <main></main>
+  <main>
+    <div class="container">
+      <div class="py-3">
+        <select name="" id="">
+          <option value="">Alien</option>
+        </select>
+      </div>
+
+      <div class="row bg-white p-5">
+        <div class="col-12 main_count bg-dark text-white p-3 fw-bold">Found tot cards</div>
+        <div class="col-12 col-md-4 col-lg-2">
+          <div class="content_card">
+            <img class="img-fluid" src="https://images.ygoprodeck.com/images/cards/34541863.jpg" alt="">
+
+            <h5 class="text-white fw-bold pt-3">Lorem ipsum dolor sit amet.</h5>
+            <p class="text-center py-2">Alien</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
 </template>
 
 <style lang="scss">
@@ -47,6 +67,15 @@ header {
     max-width: 100%;
     height: 30px !important;
     padding-right: 1rem;
+  }
+}
+
+main {
+  background-color: $primary;
+
+  .content_card {
+    background-color: $primary;
+
   }
 }
 </style>
