@@ -3,7 +3,9 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      API_URL: 'https://db.ygoprodeck.com/api/v7/cardinfo.php',
+      API_URL: 'https://db.ygoprodeck.com/api/v7/cardinfo.php?num=12&offset=0',
+      characters: null,
+      info: null,
     }
   },
   methods: {
@@ -11,7 +13,7 @@ export default {
       axios
         .get(url)
         .then(response => {
-          console.log(response.data);
+          this.characters = response.data.data;
         }).catch(err => {
           console.log(err);
           console.error(err.message);
@@ -42,18 +44,24 @@ export default {
         </select>
       </div>
 
-      <div class="row bg-white p-5">
-        <div class="col-12 main_count bg-dark text-white p-3 fw-bold">Found tot cards</div>
-        <div class="col-12 col-md-4 col-lg-2">
-          <div class="content_card">
-            <img class="img-fluid" src="https://images.ygoprodeck.com/images/cards/34541863.jpg" alt="">
+      <div class="row bg-white justify-content-between p-5">
 
-            <h5 class="text-white fw-bold pt-3">Lorem ipsum dolor sit amet.</h5>
-            <p class="text-center py-2">Alien</p>
+        <div class="col-12 main_count bg-dark text-white p-3 fw-bold">Found tot cards</div>
+
+        <div v-for="character in characters" class="col-12 col-md-4 col-lg-3">
+          <div class="content_card">
+            <img class="img-fluid" :src="character.card_images[0].image_url" alt="">
+
+            <h6 class="text-white fw-bold pt-3 text-center px-2">{{ character.name }} </h6>
+            <p class="text-center py-2">{{ character.archetype }} </p>
           </div>
         </div>
+        <!-- ./cols -->
+
       </div>
+      <!-- ./row -->
     </div>
+    <!-- /.container -->
   </main>
 </template>
 
@@ -75,7 +83,8 @@ main {
 
   .content_card {
     background-color: $primary;
-
+    height: 500px;
+    margin-bottom: 1rem;
   }
 }
 </style>
