@@ -40,8 +40,8 @@ export default {
                     <option value="">All</option>
                     <option value="Alien">Alien</option>
                     <option value="Archfiend">Archfiend</option>
-                    <option value="Noble Knight">Noble Knight</option>
                     <option value="Elemental HERO">Elemental HERO</option>
+                    <option value="Noble Knight">Noble Knight</option>
                     <option value="Umi">Umi</option>
                 </select>
             </div>
