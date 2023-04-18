@@ -13,11 +13,16 @@ export default {
     components: {
         CardItem
     },
-    computed: {
+    methods: {
         filterCards() {
-            const url = this.store.API_URL + `archetype=${this.optionSelected}`;
+            let url = '';
+            if (this.optionSelected == 'Select Archetype') {
+                url = this.store.API_URL;
+            } else {
+                url = this.store.API_URL + `&archetype=${this.optionSelected}`;
+            }
             console.log(url);
-            this.store.API_URL = url;
+            this.store.callApi(url)
         },
     },
     mounted() {
@@ -30,9 +35,13 @@ export default {
     <main>
         <div class="container">
             <div class="py-3">
-                <select @click="filterCards" name="" id="" v-model="optionSelected">
-                    <option v-for="character in store.cards" :value="character.archetype">{{ character.archetype }}
-                    </option>
+                <select @change="filterCards" name="" id="" v-model="optionSelected">
+                    <option disabled value="">Select Archetype</option>
+                    <option value="Alien">Alien</option>
+                    <option value="Archfiend">Archfiend</option>
+                    <option value="Noble Knight">Noble Knight</option>
+                    <option value="Elemental HERO">Elemental HERO</option>
+                    <option value="Umi">Umi</option>
                 </select>
             </div>
 
