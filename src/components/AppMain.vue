@@ -29,10 +29,10 @@ export default {
             </div>
 
             <div class="row bg-white justify-content-between p-5">
-
-                <div class="col-12 main_count bg-dark text-white p-3 fw-bold" v-if="store.cards">
+                <div class="main_count bg-dark text-white p-3 fw-bold" v-if="store.cards">
                     Found {{ store.cards.length }} cards
                 </div>
+
 
                 <CardItem v-for="character in store.cards" :imageUrl="character.card_images[0].image_url"
                     :characterName="character.name" :characterArchetype="character.archetype"></CardItem>
@@ -49,11 +49,5 @@ export default {
 
 main {
     background-color: $primary;
-
-    .content_card {
-        background-color: $primary;
-        height: 500px;
-        margin-bottom: 1rem;
-    }
 }
 </style>

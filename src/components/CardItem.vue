@@ -10,7 +10,7 @@ export default {
 </script>
 
 <template>
-    <div class="col-12 col-md-4 col-lg-3">
+    <div class="col-12 col-md-4 my_lg_col ">
         <div class="content_card">
             <img class="img-fluid" :src="imageUrl" alt="">
 
@@ -21,4 +21,18 @@ export default {
     <!-- ./card -->
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@use '../assets/scss/partials/variables.scss' as *;
+
+.content_card {
+    background-color: $primary;
+    height: 420px;
+    margin-bottom: 1rem;
+}
+
+@media screen and (min-width: 1199.98px) {
+    .my_lg_col {
+        width: calc(100% / 5);
+    }
+}
+</style>
