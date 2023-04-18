@@ -1,16 +1,21 @@
 <script>
 import { store } from '../store.js';
+import CardItem from './CardItem.vue';
 
 export default {
-    name: 'AppMain',
+    name: "AppMain",
     data() {
         return {
             store
-        }
+        };
+    },
+    component: {
+        CardItem
     },
     mounted() {
-        this.store.callApi(this.store.API_URL)
+        this.store.callApi(this.store.API_URL);
     },
+    components: { CardItem }
 }
 </script>
 
@@ -24,18 +29,13 @@ export default {
             </div>
 
             <div class="row bg-white justify-content-between p-5">
-                <div class="col-12 main_count bg-dark text-white p-3 fw-bold" v-if="store.cards">Found {{ store.cards.length
-                }} cards</div>
 
-                <div v-for="character in store.cards" class="col-12 col-md-4 col-lg-3">
-                    <div class="content_card">
-                        <img class="img-fluid" :src="character.card_images[0].image_url" alt="">
-
-                        <h6 class="text-white fw-bold pt-3 text-center px-2">{{ character.name }} </h6>
-                        <p class="text-center py-2">{{ character.archetype }} </p>
-                    </div>
+                <div class="col-12 main_count bg-dark text-white p-3 fw-bold" v-if="store.cards">
+                    Found {{ store.cards.length }} cards
                 </div>
-                <!-- ./cols -->
+
+                <CardItem v-for="character in store.cards" :imageUrl="character.card_images[0].image_url"
+                    :characterName="character.name" :characterArchetype="character.archetype"></CardItem>
 
             </div>
             <!-- ./row -->
