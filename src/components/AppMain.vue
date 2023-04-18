@@ -16,10 +16,10 @@ export default {
     methods: {
         filterCards() {
             let url = '';
-            if (this.optionSelected == 'Select Archetype') {
-                url = this.store.API_URL;
+            if (this.optionSelected == '' || this.optionSelected == 'All') {
+                url = this.store.API_URL + `?${this.store.numOffset}`;
             } else {
-                url = this.store.API_URL + `&archetype=${this.optionSelected}`;
+                url = this.store.API_URL + `?archetype=${this.optionSelected}&${this.store.numOffset}`;
             }
             console.log(url);
             this.store.callApi(url)
@@ -37,6 +37,7 @@ export default {
             <div class="py-3">
                 <select @change="filterCards" name="" id="" v-model="optionSelected">
                     <option disabled value="">Select Archetype</option>
+                    <option value="">All</option>
                     <option value="Alien">Alien</option>
                     <option value="Archfiend">Archfiend</option>
                     <option value="Noble Knight">Noble Knight</option>
