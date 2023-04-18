@@ -26,7 +26,7 @@ export default {
 
 .content_card {
     background-color: $primary;
-    height: 420px;
+    height: 450px;
     margin-bottom: 1rem;
 }
 

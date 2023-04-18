@@ -6,16 +6,23 @@ export default {
     name: "AppMain",
     data() {
         return {
-            store
+            store,
+            optionSelected: '',
         };
     },
-    component: {
+    components: {
         CardItem
+    },
+    computed: {
+        filterCards() {
+            const url = this.store.API_URL + `archetype=${this.optionSelected}`;
+            console.log(url);
+            this.store.API_URL = url;
+        },
     },
     mounted() {
         this.store.callApi(this.store.API_URL);
     },
-    components: { CardItem }
 }
 </script>
 
@@ -23,8 +30,9 @@ export default {
     <main>
         <div class="container">
             <div class="py-3">
-                <select name="" id="">
-                    <option v-for="character in store.cards" value="">{{ character.archetype }} </option>
+                <select @click="filterCards" name="" id="" v-model="optionSelected">
+                    <option v-for="character in store.cards" :value="character.archetype">{{ character.archetype }}
+                    </option>
                 </select>
             </div>
 
