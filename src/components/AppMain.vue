@@ -29,8 +29,8 @@ export default {
             </div>
 
             <div class="row bg-white justify-content-between p-5">
-                <div class="main_count bg-dark text-white p-3 fw-bold" v-if="store.cards">
-                    Found {{ store.cards.length }} cards
+                <div v-if="store.cards">
+                    <p class="bg-dark p-3 m-0 text-white fw-bold">Found {{ store.cards.length }} cards</p>
                 </div>
 
 
